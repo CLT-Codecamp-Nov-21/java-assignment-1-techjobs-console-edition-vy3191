@@ -61,7 +61,7 @@ public class TechJobs {
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
 
-                if (searchField.equals("all")) {
+                if (!searchField.isEmpty()) {
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
@@ -119,6 +119,7 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        System.out.println(someJobs.size());
         if(someJobs.size() > 0) {
 
             for(HashMap<String, String> job : someJobs) {
@@ -126,10 +127,12 @@ public class TechJobs {
                 for(String key : job.keySet()) {
                     System.out.println(key+" : "+ job.get(key));
                 }
+                System.out.println("*******************************");
+                System.out.println("\n");
             }
-            System.out.println("*******************************");
+
         } else {
-            System.out.println("404: Not Found");
+            System.out.println("No Results");
         }
 
     }
