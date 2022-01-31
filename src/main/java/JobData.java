@@ -99,17 +99,10 @@ public class JobData {
         for(HashMap<String, String> row : allJobs) {
             for(String key : row.keySet()) {
                 String searchedStr = row.get(key);
-                boolean isMatched;
 
-//                if(key.equals("position type") || key.equals("name") || searchedStr.contains("\\,")) {
-//                    isMatched = searchedStr.toLowerCase().contains(value.toLowerCase());
-//                } else {
-//                    isMatched = searchedStr.equalsIgnoreCase(value);
-//                }
-                isMatched = searchedStr.toLowerCase().contains(value.toLowerCase());
-
-                if(isMatched && !searchedJobs.contains(row)) {
+                if(searchedStr.toLowerCase().contains(value.toLowerCase())) {
                     searchedJobs.add(row);
+                    break;
                 }
             }
         }
